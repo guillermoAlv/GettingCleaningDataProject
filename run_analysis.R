@@ -1,6 +1,6 @@
 library(data.table)
 
-#In the next twelve line we are going to merge training and test set to create a new dataset:
+#In the next twelve lines we are going to merge training and test set to create a new dataset:
 testData <- read.table("./test/X_test.txt")
 trainData <- read.table("./train/X_train.txt")
 totalData <- rbind(trainData, testData)
@@ -20,7 +20,7 @@ names(featuresLst) <- c('f_Id', 'f_Name')
 index_features <- grep("-mean\\(\\)|-std\\(\\)", featuresLst$f_Name)
 totalData <- totalData[, index_features] 
 # 3. Uses descriptive activity names to name the activities in the data set:
-names(x) <- gsub("\\(|\\)", "", (features[index_features, 2]))
+names(totalData) <- gsub("\\(|\\)", "", (featuresLst[index_features, 2]))
 
 #4. Appropriately labels the data set with descriptive activity names:
 activities <- read.table("activity_labels.txt")
